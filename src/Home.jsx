@@ -395,7 +395,7 @@ export default function Home() {
                        <div className="flex justify-between items-center">
                          <div>
                            <span className="font-cinzel text-xl sm:text-2xl text-white block">VISION 0{idx + 1}</span>
-                           <span className="font-montserrat text-xs text-neutral-400 uppercase tracking-widest">Archive {2000 + idx}</span>
+                           <span className="font-montserrat text-xs text-neutral-400 uppercase tracking-widest">Archive {2020 + idx}</span>
                          </div>
                          <div className="w-8 h-[1px] bg-red-600"></div>
                        </div>
