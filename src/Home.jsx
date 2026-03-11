@@ -1,11 +1,13 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
-import { Play, ExternalLink, ChevronRight, Share2, Disc } from 'lucide-react';
+import { Play, ExternalLink, ChevronRight, Share2, Disc, Users, Mail, Phone } from 'lucide-react';
 import gifBg from './images/gif.gif';
 import EP from './images/EP.jpg';
 import One from './images/one.jpg';
 import Two from './images/two.jpg';
 import Three from './images/three.jpg';
+// Import the new product image - replace with your actual image path
+import nowAvailableProduct from './images/now-available-product.jpg'; // Add your image here
 
 
 
@@ -173,7 +175,7 @@ export default function Home() {
       <nav className="fixed top-0 w-full z-50 px-4 sm:px-6 md:px-8 py-4 md:py-6 flex justify-between items-center mix-blend-difference backdrop-blur-sm">
          <a href="#" className="font-cinzel font-black text-xl sm:text-2xl text-red-600 tracking-widest hover:scale-110 transition-transform">BP</a>
          <div className="hidden md:flex gap-6 lg:gap-10 text-xs font-montserrat font-bold tracking-[0.2em] uppercase">
-            {['Origins', 'Works', 'Visions', 'Ritual'].map((item, i) => (
+            {['Origins', 'Works', 'Visions', 'Available', 'Ritual'].map((item, i) => (
               <a key={i} href={`#${item.toLowerCase()}`} className="hover:text-red-600 transition-colors relative group">
                 {item}
                 <span className="absolute -bottom-2 left-0 w-0 h-[2px] bg-red-600 transition-all duration-300 group-hover:w-full"></span>
@@ -410,6 +412,147 @@ export default function Home() {
                })}
              </div>
            </div>
+        </section>
+
+        {/* --- NOW AVAILABLE (New Section) --- */}
+        <section id="available" className="py-16 sm:py-20 md:py-24 lg:py-32 bg-[#0a0000] relative overflow-hidden border-y border-red-900/30">
+          <div className="absolute inset-0">
+            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top,rgba(220,38,38,0.15),transparent_70%)]"></div>
+            <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_bottom,rgba(120,0,0,0.2),transparent_70%)]"></div>
+          </div>
+
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mb-12 sm:mb-16"
+            >
+              <span className="text-red-600 font-bold tracking-[0.5em] text-xs uppercase animate-pulse block mb-4">Exclusive Release</span>
+              <GothicHeading text="NOW AVAILABLE" size="text-4xl sm:text-5xl md:text-6xl lg:text-7xl" />
+            </motion.div>
+
+            <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
+              {/* Product Image */}
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                className="relative group"
+              >
+                <div className="absolute inset-0 bg-red-600/20 blur-[80px] -z-10 group-hover:bg-red-600/40 transition-colors duration-500"></div>
+                
+                {/* Decorative frame */}
+                <div className="absolute -inset-4 border border-red-900/30 rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute -inset-2 border border-white/10 rounded-sm"></div>
+                
+                <img
+                  src={nowAvailableProduct} 
+                  alt="Now Available Product"
+                  className="w-full h-auto object-cover shadow-2xl border border-white/10 grayscale hover:grayscale-0 transition-all duration-700"
+                />
+                
+                {/* Red overlay on hover */}
+                <div className="absolute inset-0 bg-red-900/10 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              </motion.div>
+
+              {/* Content */}
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3 }}
+                className="space-y-6 sm:space-y-8"
+              >
+                <div className="space-y-4">
+                  <h3 className="font-cinzel text-3xl sm:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-800">
+                    Join the Prodigal Society
+                  </h3>
+                  
+                  <p className="font-montserrat text-neutral-400 text-base sm:text-lg leading-relaxed">
+                    Be among the first to own this exclusive piece. Limited quantities available. Secure your connection to the Prodigal Society today.
+                  </p>
+                </div>
+
+                {/* WhatsApp Community Link */}
+                <motion.a
+                  href="https://chat.whatsapp.com/Iiv2Xw9FH48GjgMOOEMeTH?mode=gi_t"
+                  target="_blank"
+                  rel="noreferrer"
+                  whileHover={{ scale: 1.02 }}
+                  className="group relative block p-6 sm:p-8 border border-white/10 bg-black/50 overflow-hidden transition-all duration-300 hover:border-green-500/50"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r from-green-600/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  
+                  <div className="relative z-10 flex items-center justify-between">
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full border border-white/10 flex items-center justify-center group-hover:border-green-500/30 group-hover:bg-green-500/10 transition-all">
+                        <Users className="w-6 h-6 sm:w-7 sm:h-7 text-green-500" />
+                      </div>
+                      <div>
+                        <h4 className="font-cinzel text-xl sm:text-2xl text-white group-hover:text-green-500 transition-colors">WhatsApp Community</h4>
+                        <p className="font-montserrat text-xs text-neutral-500 uppercase tracking-wider">Join the inner circle</p>
+                      </div>
+                    </div>
+                    <ExternalLink className="w-5 h-5 text-green-500/50 group-hover:text-green-500 transition-colors" />
+                  </div>
+                </motion.a>
+
+                {/* Contact Information */}
+                <div className="grid sm:grid-cols-2 gap-4 pt-4">
+                  {/* Email */}
+                  <motion.a
+                    href="mailto:princeadusu123@gmail.com"
+                    whileHover={{ scale: 1.02 }}
+                    className="group relative p-4 sm:p-6 border border-white/10 bg-black/50 overflow-hidden transition-all duration-300 hover:border-red-500/50"
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-r from-red-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    
+                    <div className="relative z-10 flex items-center gap-3">
+                      <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-red-500/70 group-hover:text-red-500 transition-colors" />
+                      <div>
+                        <h5 className="font-cinzel text-sm sm:text-base text-white">Email</h5>
+                        <p className="font-montserrat text-xs text-neutral-500 break-all">princeadusu123@gmail.com</p>
+                      </div>
+                    </div>
+                  </motion.a>
+
+                  {/* Phone */}
+                  <motion.a
+                    href="tel:+233554827431"
+                    whileHover={{ scale: 1.02 }}
+                    className="group relative p-4 sm:p-6 border border-white/10 bg-black/50 overflow-hidden transition-all duration-300 hover:border-red-500/50"
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-r from-red-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    
+                    <div className="relative z-10 flex items-center gap-3">
+                      <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-red-500/70 group-hover:text-red-500 transition-colors" />
+                      <div>
+                        <h5 className="font-cinzel text-sm sm:text-base text-white">Phone</h5>
+                        <p className="font-montserrat text-xs text-neutral-500">0554827431</p>
+                      </div>
+                    </div>
+                  </motion.a>
+                </div>
+
+                {/* Decorative text */}
+                <div className="pt-4">
+                  <p className="font-cinzel text-xs text-red-900/50 tracking-[0.3em] uppercase text-center sm:text-left">
+                    For bookings & inquiries
+                  </p>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Animated border bottom */}
+            <motion.div 
+              initial={{ width: 0 }}
+              whileInView={{ width: "100%" }}
+              viewport={{ once: true }}
+              className="h-[1px] bg-gradient-to-r from-transparent via-red-900 to-transparent mt-12 sm:mt-16"
+            />
+          </div>
         </section>
 
         {/* --- RITUAL (Links) --- */}
